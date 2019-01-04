@@ -983,6 +983,7 @@ void destruct_object(object_t *ob) {
     SETOBNAME(new_ob, "");
     ObjectTable::instance().remove(ob->obname);
     SETOBNAME(new_ob, tmp);
+    ObjectTable::instance().insert(new_ob->obname, new_ob);
     tmp_ob = ob;
     free_object(&tmp_ob, "vital object reference");
     // still need ob below!
@@ -1854,14 +1855,13 @@ void error_handler(char *err) {
         num_mudlib_error = 0;
       } else {
         if (max_eval_error) {
-          set_eval(INT64_MAX);
           outoftime = 0;
         }
+
         if (!too_deep_error) {
           num_mudlib_error++;
           mudlib_error_handler(err, 1);
           num_mudlib_error--;
-          set_eval(max_eval_cost);
         }
       }
     }
