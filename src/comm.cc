@@ -86,7 +86,7 @@ void on_user_command(evutil_socket_t fd, short what, void *arg) {
   // This catch block should be moved one level down.
   error_context_t econ;
   save_context(&econ);
-  set_eval(max_cost);
+  set_eval(max_eval_cost);
   try {
     process_user_command(user);
   } catch (const char *) {
@@ -617,7 +617,7 @@ void get_user_data(interactive_t *ip) {
           ip->text_start = ip->text_end = 0;
           text_space = MAX_TEXT;
         }
-        
+
       }
       break;
 

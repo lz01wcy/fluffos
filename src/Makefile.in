@@ -85,10 +85,9 @@ VM_OBJS= \
 	vm/internal/applies_table.autogen.o \
 	vm/internal/efuns.autogen.o \
 	vm/internal/apply.o \
-	vm/internal/eval.o \
+	vm/internal/eval_limit.o \
 	vm/internal/master.o \
 	vm/internal/otable.o \
-	vm/internal/posix_timers.o \
 	vm/internal/simul_efun.o \
 	vm/internal/simulate.o \
 	vm/internal/trace.o \
@@ -259,11 +258,11 @@ install: all
 	@install -m 0755 $(DRIVER_BIN) $(INSTALL_DIR)
 	@install -m 0755 portbind $(INSTALL_DIR)
 
-googletest: 
+googletest:
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS) -c vm/internal/otable.cc -o vm/internal/otable.o
 	@$(CXX) $(CXXFLAGS) $(LDFLAGS)  -lgtest vm/internal/otable_test.cc vm/internal/otable.o -o otable_test
 	@./otable_test
-	
+
 help:
 	@echo "***************** Configuration completed **************"
 	@echo "Compiling @PACKAGE_STRING@ (@SOURCE_REVISION@) as $(DRIVER_BIN) for @target@."

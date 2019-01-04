@@ -70,8 +70,8 @@ maximum bits in a bitfield : 1200
 maximum local variables : 30
 
 # Maximum amount of "eval cost" per thread - execution is halted when
-# it is exceeded. 32bit value.
-maximum evaluation cost : 2147483647
+# it is exceeded. 32bit value. The unit is microseconds.
+maximum evaluation cost : 300000000
 
 # This is the maximum array size allowed for one single array.
 maximum array size : 15000
@@ -91,7 +91,7 @@ maximum string length : 200000
 # Max size of a file allowed to be read by 'read_file()'.
 maximum read file size : 200000
 
-# max number of bytes you allow to be read and written with read_bytes 
+# max number of bytes you allow to be read and written with read_bytes
 # and write_bytes
 maximum byte transfer : 10000
 
