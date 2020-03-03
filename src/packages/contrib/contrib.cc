@@ -155,7 +155,10 @@ void f_store_variable(void) {
 
   idx = find_global_variable(ob->prog, name, &type, 0);
   if (idx == -1 || (ob != current_object && (type & DECL_PRIVATE))) {
-    error("Variable named '%s' does not exist or is not visible!\n", name);
+    // error("Variable named '%s' does not exist or is not visible!\n", name);
+    pop_n_elems(st_num_arg);
+    push_undefined();
+    return;
   }
   assign_svalue(&ob->variables[idx], sv);
   pop_n_elems(st_num_arg);
@@ -181,7 +184,10 @@ void f_fetch_variable(void) {
   idx = find_global_variable(ob->prog, name, &type, 0);
 
   if (idx == -1 || (ob != current_object && (type & DECL_PRIVATE))) {
-    error("Variable named '%s' does not exist or is not visible!\n", name);
+    // error("Variable named '%s' does not exist or is not visible!\n", name);
+    pop_n_elems(st_num_arg);
+    push_undefined();
+    return;
   }
   pop_n_elems(st_num_arg);
   push_svalue(&ob->variables[idx]);
