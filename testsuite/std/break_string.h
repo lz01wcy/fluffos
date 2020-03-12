@@ -8,7 +8,4 @@
 #define BS_INDENT_ONCE         16
 #define BS_PREPEND_INDENT      32
 
-#define TRIM_LEFT               1
-#define TRIM_RIGHT              2
-
 #endif
